@@ -14,12 +14,29 @@ from sklearn.preprocessing import StandardScaler
 def load_and_combine_data(directory: str) -> pd.DataFrame:
     """Load all CSV files from the specified directory and combine them into one DataFrame."""
     frames = []
+    file_count = 0
+    total_rows = 0
+
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):
             filepath = os.path.join(directory, filename)
             df = pd.read_csv(filepath)
+            rows, columns = df.shape
+
+            print(f"Loaded {filename} with {rows} rows and {columns} columns.")
+
             frames.append(df)
+            file_count += 1
+            total_rows += rows
+
     combined_df = pd.concat(frames, ignore_index=True)
+
+    print(f"Total files loaded: {file_count}")
+    print(f"Total rows combined: {total_rows}")
+    print(
+        f"Combined DataFrame has {combined_df.shape[0]} rows and {combined_df.shape[1]} columns."
+    )
+
     return combined_df
 
 
