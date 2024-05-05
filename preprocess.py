@@ -121,8 +121,8 @@ def save_model(model: RandomForestClassifier, filename: str) -> None:
 
 
 if __name__ == "__main__":
-    directory_path = "./data/"
-    data = load_and_combine_data(directory_path)
+    DIRECTORY_PATH = "./data/"
+    data = load_and_combine_data(DIRECTORY_PATH)
     data = feature_engineering(data)
     data = label_data(data)
     X_train, X_test, y_train, y_test = preprocess_data(data)

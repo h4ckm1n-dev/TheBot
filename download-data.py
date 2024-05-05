@@ -2,7 +2,7 @@ import csv
 from datetime import datetime, timedelta
 
 import ccxt
-import pytz  # Import the pytz module for timezone handling
+import pytz
 from rich.console import Console
 
 console = Console()
@@ -15,13 +15,23 @@ binance = ccxt.binance(
 )
 
 
-def fetch_ohlcv_in_chunks(symbol, start_date, end_date, timeframe):
+def fetch_ohlcv_in_chunks(symbol, start_date, end_date, timeframe) -> list:
+    """
+    Fetches OHLCV (Open, High, Low, Close, Volume) data in chunks for a given symbol, date range, and timeframe.
+
+    Args:
+        symbol (Any): The symbol for which OHLCV data is to be fetched.
+        start_date (Any): The start date of the data range.
+        end_date (Any): The end date of the data range.
+        timeframe (Any): The timeframe for the OHLCV data (e.g., '1h', '1d').
+
+    Returns:
+        list: A list of OHLCV data fetched in chunks.
+    """
     all_data = []
     current_date = start_date
     while current_date < end_date:
-        next_date = min(
-            current_date + timedelta(days=365), end_date
-        )  # Adjust the chunk size as needed
+        next_date = min(current_date + timedelta(days=365), end_date)
         since = binance.parse8601(current_date.strftime("%Y-%m-%d") + "T00:00:00Z")
         data = binance.fetch_ohlcv(symbol, timeframe, since)
         all_data.extend(data)
@@ -29,7 +39,19 @@ def fetch_ohlcv_in_chunks(symbol, start_date, end_date, timeframe):
     return all_data
 
 
-def download_crypto_data(symbols, start_date, end_date, timeframe):
+def download_crypto_data(symbols, start_date, end_date, timeframe) -> None:
+    """
+    Downloads OHLCV (Open, High, Low, Close, Volume) data for multiple symbols within a given date range and timeframe.
+
+    Args:
+        symbols (Any): List of symbols for which OHLCV data is to be fetched.
+        start_date (Any): The start date of the data range.
+        end_date (Any): The end date of the data range.
+        timeframe (Any): The timeframe for the OHLCV data (e.g., '1h', '1d').
+
+    Returns:
+        None
+    """
     for symbol in symbols:
         console.print(f"Fetching OHLCV data for {symbol}...", style="bold blue")
         ohlcv_data = fetch_ohlcv_in_chunks(symbol, start_date, end_date, timeframe)
@@ -41,7 +63,7 @@ def download_crypto_data(symbols, start_date, end_date, timeframe):
         csv_file_path = f'./data/{symbol.replace("/", "_")}_price_data.csv'
 
         # Writing to CSV
-        with open(csv_file_path, "w", newline="") as file:
+        with open(csv_file_path, "w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
             writer.writerow(["Timestamp", "Open", "High", "Low", "Close", "Volume"])
             for row in ohlcv_data:
@@ -57,60 +79,15 @@ def download_crypto_data(symbols, start_date, end_date, timeframe):
 
 
 # Your desired date range and other parameters
-start_date = datetime(2018, 1, 1)  # Example: starting from January 1, 2018
-end_date = datetime.now()  # Up to the current date
+start_date = datetime(2018, 1, 1)
+end_date = datetime.now()
 symbols = [
     "BTC/USDT",  # Bitcoin
     "ETH/USDT",  # Ethereum
     "BNB/USDT",  # Binance Coin
-    "ADA/USDT",  # Cardano
-    "SOL/USDT",  # Solana
-    "XRP/USDT",  # Ripple
-    "DOT/USDT",  # Polkadot
-    "LUNA/USDT",  # Terra (consider recent events for Terra)
-    "DOGE/USDT",  # Dogecoin
-    "AVAX/USDT",  # Avalanche
-    "SHIB/USDT",  # Shiba Inu
-    "MATIC/USDT",  # Polygon
-    "LTC/USDT",  # Litecoin
-    "UNI/USDT",  # Uniswap
-    "LINK/USDT",  # Chainlink
-    "ALGO/USDT",  # Algorand
-    "XLM/USDT",  # Stellar
-    "VET/USDT",  # VeChain
-    "AXS/USDT",  # Axie Infinity
-    "ATOM/USDT",  # Cosmos
-    "FTT/USDT",  # FTX Token
-    "TRX/USDT",  # TRON
-    "ETC/USDT",  # Ethereum Classic
-    "FIL/USDT",  # Filecoin
-    "THETA/USDT",  # Theta Network
-    "XTZ/USDT",  # Tezos
-    "EOS/USDT",  # EOS
-    "AAVE/USDT",  # Aave
-    "KSM/USDT",  # Kusama
-    "NEO/USDT",  # NEO
-    "MKR/USDT",  # Maker
-    "COMP/USDT",  # Compound
-    "ZEC/USDT",  # Zcash
-    "WAVES/USDT",  # Waves
-    "DASH/USDT",  # Dash
-    "SNX/USDT",  # Synthetix
-    "DCR/USDT",  # Decred
-    "XEM/USDT",  # NEM
-    "QTUM/USDT",  # Qtum
-    "ZIL/USDT",  # Zilliqa
-    "BAT/USDT",  # Basic Attention Token
-    "ENJ/USDT",  # Enjin Coin
-    "MANA/USDT",  # Decentraland
-    "SUSHI/USDT",  # SushiSwap
-    "YFI/USDT",  # Yearn.finance
-    "UMA/USDT",  # UMA
-    "ICX/USDT",  # ICON
-    "ONT/USDT",  # Ontology
-    "ZRX/USDT",  # 0x
-]  # Simplified list for illustration
-timeframe = "1h"
+    # Add more symbols if needed
+]
+TIMEFRAME = "1h"
 
 # Download the data
-download_crypto_data(symbols, start_date, end_date, timeframe)
+download_crypto_data(symbols, start_date, end_date, TIMEFRAME)
