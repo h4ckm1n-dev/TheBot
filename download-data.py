@@ -10,7 +10,7 @@ console = Console()
 # Initialize the Binance Exchange
 binance = ccxt.binance(
     {
-        "enableRateLimit": True,  # important for Binance to avoid IP bans
+        "enableRateLimit": True,
     }
 )
 
@@ -110,7 +110,7 @@ symbols = [
     "ONT/USDT",  # Ontology
     "ZRX/USDT",  # 0x
 ]  # Simplified list for illustration
-timeframe = "1d"
+timeframe = "1h"
 
 # Download the data
 download_crypto_data(symbols, start_date, end_date, timeframe)

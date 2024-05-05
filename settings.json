@@ -1,0 +1,77 @@
+{
+  "editor.formatOnSave": true,
+  "editor.hover.enabled": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.wordWrap": "on",
+  "editor.smoothScrolling": true,
+  "editor.trimAutoWhitespace": true,
+  "editor.renderLineHighlight": "all",
+  "editor.renderWhitespace": "selection",
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.autoIndent": "advanced",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.autoIndent": "explicit",
+    "source.addMissingImports": "explicit",
+    "source.removeUnused": "explicit",
+    "source.sortMembers": "explicit"
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+      "source.autoIndent": "explicit",
+      "source.addMissingImports": "explicit",
+      "source.removeUnused": "explicit",
+      "source.sortMembers": "explicit"
+    }
+  },
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "golang.go",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+      "source.autoIndent": "explicit",
+      "source.addMissingImports": "explicit",
+      "source.removeUnused": "explicit",
+      "source.sortMembers": "explicit"
+    }
+  },
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.autoIndent": "explicit"
+    }
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.autoIndent": "explicit"
+    }
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/crds/application-crd.yaml": [],
+    "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.3-standalone-strict/all.json": [],
+    "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/crds/applicationset-crd.yaml": [
+      "file:///home/h4ckm1n/Documents/argo-cd/apps/templates/*.yaml"
+    ],
+    "https://json.schemastore.org/yamllint.json": [],
+    "https://json.schemastore.org/helmfile.json": [
+      "file:///home/h4ckm1n/Documents/argo-cd/argo-cd/values.yaml",
+      "file:///home/h4ckm1n/Documents/argo-cd/blackbox/values.yaml",
+      "file:///home/h4ckm1n/Documents/argo-cd/grafana-loki/values.yaml",
+      "file:///home/h4ckm1n/Documents/argo-cd/keycloak/values.yaml",
+      "file:///home/h4ckm1n/Documents/argo-cd/prom-stack/values.yaml"
+    ]
+  }
+}
+
