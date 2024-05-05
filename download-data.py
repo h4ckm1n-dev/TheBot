@@ -1,8 +1,8 @@
 import csv
 from datetime import datetime, timedelta
-import pytz  # Import the pytz module for timezone handling
 
 import ccxt
+import pytz  # Import the pytz module for timezone handling
 from rich.console import Console
 
 console = Console()
