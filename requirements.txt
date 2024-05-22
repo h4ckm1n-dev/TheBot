@@ -6,5 +6,5 @@ numpy==1.26.4
 pandas==2.2.2
 pytz==2024.1
 rich==13.7.1
-scikit-learn==1.4.2
+scikit-learn==1.5.0
 scipy==1.13.0
