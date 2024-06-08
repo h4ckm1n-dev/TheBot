@@ -1,5 +1,4 @@
 ccxt==4.3.41
-csv==1.0
 h5py==3.11.0
 joblib==1.4.2
 numpy==1.26.4
@@ -8,3 +7,4 @@ pytz==2024.1
 rich==13.7.1
 scikit-learn==1.5.0
 scipy==1.13.1
+tensorflow-gpu==2.8.0
