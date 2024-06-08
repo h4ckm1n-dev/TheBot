@@ -14,6 +14,31 @@ binance = ccxt.binance(
     }
 )
 
+# Your desired date range and other parameters
+start_date = datetime(2018, 1, 1)
+end_date = datetime.now()
+symbols = [
+    "BTC/USDT",  # Bitcoin
+    "ETH/USDT",  # Ethereum
+    "BNB/USDT",  # Binance Coin
+    "ADA/USDT",  # Cardano
+    "XRP/USDT",  # Ripple
+    "DOGE/USDT",  # Dogecoin
+    "DOT/USDT",  # Polkadot
+    "UNI/USDT",  # Uniswap
+    "SOL/USDT",  # Solana
+    "LUNA/USDT",  # Terra
+    "AVAX/USDT",  # Avalanche
+    "FTT/USDT",  # FTX Token
+    "ALGO/USDT",  # Algorand
+    "ATOM/USDT",  # Cosmos
+    "VET/USDT",  # VeChain
+    "MATIC/USDT",  # Polygon
+    "ICP/USDT",  # Internet Computer
+    # Add more symbols if needed
+]
+TIMEFRAME = "1h"
+
 
 def fetch_ohlcv_in_chunks(symbol, start_date, end_date, timeframe) -> list:
     """
@@ -53,7 +78,11 @@ def download_crypto_data(symbols, start_date, end_date, timeframe) -> None:
         None
     """
     for symbol in symbols:
-        console.print(f"Fetching OHLCV data for {symbol}...", style="bold blue")
+        console.print(
+            f"Fetching OHLCV data for {
+                symbol}...",
+            style="bold blue",
+        )
         ohlcv_data = fetch_ohlcv_in_chunks(symbol, start_date, end_date, timeframe)
         console.print(
             f"OHLCV data for {symbol} fetched successfully.", style="bold green"
@@ -78,16 +107,20 @@ def download_crypto_data(symbols, start_date, end_date, timeframe) -> None:
         )
 
 
-# Your desired date range and other parameters
-start_date = datetime(2018, 1, 1)
-end_date = datetime.now()
-symbols = [
-    "BTC/USDT",  # Bitcoin
-    "ETH/USDT",  # Ethereum
-    "BNB/USDT",  # Binance Coin
-    # Add more symbols if needed
-]
-TIMEFRAME = "1h"
+def verify_date_range(start_date, end_date) -> bool:
+    """
+    Verifies if the given date range is valid.
+    Args:
+        start_date (Any): The start date of the date range.
+        end_date (Any): The end date of the date range.
+    Returns:
+        bool: True if the date range is valid, False otherwise.
+    """
+    if start_date >= end_date:
+        console.print("The start date must be before the end date.", style="bold red")
+        return False
+    return True
+
 
 # Download the data
 download_crypto_data(symbols, start_date, end_date, TIMEFRAME)
