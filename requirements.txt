@@ -7,4 +7,4 @@ pytz==2024.1
 rich==13.7.1
 scikit-learn==1.5.0
 scipy==1.13.1
-tensorflow-gpu==2.9.3
+tensorflow-gpu==2.12.0
