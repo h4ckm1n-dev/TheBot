@@ -1,10 +1,10 @@
-ccxt==4.3.55
+ccxt==4.3.56
 h5py==3.11.0
 joblib==1.4.2
 numpy==1.26.4
 pandas==2.2.2
 pytz==2024.1
 rich==13.7.1
-scikit-learn==1.5.0
+scikit-learn==1.5.1
 scipy==1.14.0
 tensorflow-gpu==2.12.0
