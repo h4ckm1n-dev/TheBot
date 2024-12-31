@@ -1,7 +1,7 @@
 ccxt==4.4.44
 h5py==3.12.1
 joblib==1.4.2
-numpy==1.26.4
+numpy==2.2.1
 pandas==2.2.3
 pytz==2024.2
 rich==13.9.4
