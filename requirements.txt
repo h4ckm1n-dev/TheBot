@@ -1,6 +1,6 @@
-ccxt==4.5.27
+ccxt==4.5.28
 h5py==3.15.1
-joblib==1.5.2
+joblib==1.5.3
 numpy==1.26.4
 pandas==2.3.3
 pytz==2024.2
